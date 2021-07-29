@@ -232,7 +232,7 @@ d3.csv("assets/data/data.csv").then(function(data, err) {
     .attr("cx", d => xLinearScale(d[chosenXAxis]))
     .attr("cy", d => yLinearScale(d.healthcare))
     .attr("r", 20)
-    .attr("fill", "pink")
+    .attr("fill", "lightblue")
     .attr("opacity", ".5");
 
   // added by Erin - I wanted to add text to the circles - probably several ways of doing this but here is one.
@@ -240,7 +240,7 @@ d3.csv("assets/data/data.csv").then(function(data, err) {
   // added round function to make the numbers in the cirlces have no decimals; this is a random data selection; I just wanted something inside the circles. If you want to see why these values are like they are then you need to back-calculate what xScale and transpose is doing
   var textcirclesGroup = circlesGroupAll
     .append("text")
-    .text((d) => Math.round(xLinearScale(d[chosenXAxis])))
+    .text((d) => d.abbr)
     .attr("x", d => xLinearScale(d[chosenXAxis]))
     .attr("y", d => yLinearScale(d.healthcare))
 
@@ -255,12 +255,12 @@ d3.csv("assets/data/data.csv").then(function(data, err) {
     .classed("active", true)
     .text("Poverty Level (%)");
 
-  var albumsLabel = labelsGroup.append("text")
-    .attr("x", 0)
-    .attr("y", 40)
-    .attr("value", "age") // value to grab for event listener
-    .classed("inactive", true)
-    .text("Age");
+  // var albumsLabel = labelsGroup.append("text")
+  //   .attr("x", 0)
+  //   .attr("y", 40)
+  //   .attr("value", "age") // value to grab for event listener
+  //   .classed("inactive", true)
+  //   .text("Age");
 
   // append y axis
   chartGroup.append("text")
